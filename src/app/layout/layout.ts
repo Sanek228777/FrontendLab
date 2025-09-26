@@ -8,5 +8,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./layout.css']
 })
 export class Layout {
-  appTitle = 'Web розробка';
+  title = 'Web розробка';
 }

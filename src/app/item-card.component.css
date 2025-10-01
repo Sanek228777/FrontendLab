@@ -1,0 +1,21 @@
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 12px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border-left: 6px solid #4a90e2;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  border-left-color: #6a1b9a;
+}
+
+.description {
+  font-style: italic;
+  color: #555;
+  margin-top: 8px;
+}

@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Project } from '../shared/models/project.model';
 import { ItemCardComponent } from './item-card.component';
-
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent],
+  imports: [CommonModule, FormsModule, ItemCardComponent],
   templateUrl: './items-list.component.html',
   styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent {
+  searchTerm: string = '';
+
   projects: Project[] = [
     {
       id: 1,
@@ -38,4 +40,17 @@ export class ItemsListComponent {
       createdAt: new Date('2025-04-05')
     }
   ];
+
+  onProjectSelected(project: Project) {
+    console.log('Обраний проект:', project);
+  }
+
+  filteredProjects(): Project[] {
+    if (!this.searchTerm.trim()) {
+      return this.projects;
+    }
+    return this.projects.filter(p =>
+      p.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 }

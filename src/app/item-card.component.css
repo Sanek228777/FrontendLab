@@ -19,3 +19,16 @@
   color: #555;
   margin-top: 8px;
 }
+
+.highlight {
+  background: #f0fff0;
+}
+
+.badge {
+  background: #d32f2f;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 10px;
+}

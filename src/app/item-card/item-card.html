@@ -5,7 +5,11 @@
        'outdated': project.createdAt.getFullYear() < 2020
      }">
 
-  <h3>{{ project.name }}</h3>
+  <h3>
+    {{ project.name }}
+    <span *ngIf="project.createdAt.getFullYear() >= 2024" class="badge">NEW!</span>
+  </h3>
+
   <p class="description">{{ project.description }}</p>
   <p><b>Tech:</b> {{ project.technology }}</p>
   <p><b>Author:</b> {{ project.author }}</p>

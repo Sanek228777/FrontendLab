@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';   // 🔹 додати
-import { ItemCardComponent } from './item-card.component';
-import { DataService } from '../shared/services/data.service';
-import { Project } from '../shared/models/project.model';
+import { FormsModule } from '@angular/forms';
+import { ItemCardComponent } from '../item-card/item-card';
+import { DataService } from '../../shared/services/data.service';
+import { Project } from '../../shared/models/project.model';
+
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, ItemCardComponent], // 🔹 FormsModule
-  templateUrl: './items-list.component.html',
-  styleUrls: ['./items-list.component.css']
+  imports: [CommonModule, FormsModule, ItemCardComponent],
+  templateUrl: './items-list.html',
+  styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent implements OnInit {
   projects: Project[] = [];
@@ -23,7 +24,7 @@ export class ItemsListComponent implements OnInit {
   }
 
   filteredProjects(): Project[] {
-    return this.projects.filter(p =>
+    return this.projects.filter((p: Project) =>
       p.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }

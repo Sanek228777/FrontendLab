@@ -1,0 +1,13 @@
+<div class="card"
+     [ngClass]="{
+       'new': project.createdAt.getFullYear() >= 2024,
+       'old': project.createdAt.getFullYear() >= 2020 && project.createdAt.getFullYear() < 2024,
+       'outdated': project.createdAt.getFullYear() < 2020
+     }">
+
+  <h3>{{ project.name }}</h3>
+  <p class="description">{{ project.description }}</p>
+  <p><b>Tech:</b> {{ project.technology }}</p>
+  <p><b>Author:</b> {{ project.author }}</p>
+  <p><b>Created:</b> {{ project.createdAt | date:'longDate' }}</p>
+</div>

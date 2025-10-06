@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../shared/models/project.model';
-
 
 @Component({
   selector: 'app-item-card',
@@ -12,4 +11,10 @@ import { Project } from '../../shared/models/project.model';
 })
 export class ItemCardComponent {
   @Input() project!: Project;
+
+  @Output() select = new EventEmitter<Project>();
+
+  onSelect() {
+    this.select.emit(this.project);
+  }
 }

@@ -1,14 +1,13 @@
-<main>
-  <input
-    type="text"
-    placeholder="Пошук проекту"
-    [(ngModel)]="searchTerm"
-  >
+<h2>Projects</h2>
 
-  <div class="list">
-    <app-item-card
-      *ngFor="let project of filteredProjects()"
-      [project]="project">
-    </app-item-card>
-  </div>
-</main>
+<input type="text"
+       [(ngModel)]="searchTerm"
+       placeholder="Пошук за назвою..." />
+
+<div class="list">
+  <app-item-card
+    *ngFor="let project of filteredProjects()"
+    [project]="project"
+    (select)="onProjectSelected($event)">
+  </app-item-card>
+</div>

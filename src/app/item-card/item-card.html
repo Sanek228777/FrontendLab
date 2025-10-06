@@ -1,17 +1,17 @@
 <div class="card"
-     [ngClass]="{
-       'new': project.createdAt.getFullYear() >= 2024,
-       'old': project.createdAt.getFullYear() >= 2020 && project.createdAt.getFullYear() < 2024,
-       'outdated': project.createdAt.getFullYear() < 2020
-     }">
+     [ngClass]="{ 'highlight': project.technology.includes('Angular') }"
+     [ngStyle]="{ 'border-color': project.technology.includes('React') ? 'blue' : 'gray' }">
 
-  <h3>
-    {{ project.name }}
-    <span *ngIf="project.createdAt.getFullYear() >= 2024" class="badge">NEW!</span>
-  </h3>
+  <h3>{{ project.name }}</h3>
+
+  <span *ngIf="project.createdAt.getFullYear() === 2025" class="badge">
+    NEW
+  </span>
 
   <p class="description">{{ project.description }}</p>
   <p><b>Tech:</b> {{ project.technology }}</p>
   <p><b>Author:</b> {{ project.author }}</p>
   <p><b>Created:</b> {{ project.createdAt | date:'longDate' }}</p>
+
+  <button (click)="onSelect()">Детальніше</button>
 </div>

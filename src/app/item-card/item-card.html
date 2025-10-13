@@ -13,5 +13,7 @@
   <p><b>Author:</b> {{ project.author }}</p>
   <p><b>Created:</b> {{ project.createdAt | date:'longDate' }}</p>
 
-  <button (click)="onSelect()">Детальніше</button>
+  <a [routerLink]="['/items', project.id]" class="btn-details">
+    Детальніше
+  </a>
 </div>

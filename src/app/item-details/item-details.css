@@ -1,0 +1,25 @@
+.details-container {
+  padding: 20px;
+  background: #f9f9fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.details-text {
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: #6c63ff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.btn-back:hover {
+  background: #5548d2;
+}

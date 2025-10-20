@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { Project } from '../../shared/models/project.model';
 import { ItemCardComponent } from '../item-card/item-card';
 import { DataService } from '../../shared/services/data.service';
@@ -13,34 +12,23 @@ import { DataService } from '../../shared/services/data.service';
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsListComponent implements OnInit, OnDestroy {
+export class ItemsListComponent implements OnInit {
   projects: Project[] = [];
-  searchTerm = '';
-  private subs = new Subscription();
+  searchTerm: string = '';
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.subs.add(
-      this.dataService.projects$.subscribe(projects => {
-        this.projects = projects;
-      })
-    );
-
-    this.subs.add(
-      this.dataService.getItems().subscribe()
-    );
+  ngOnInit() {
+    this.projects = this.dataService.getItems();
   }
 
-  onSearchChange(): void {
-    this.dataService.filterProjects(this.searchTerm);
+  filteredProjects(): Project[] {
+    return this.projects.filter(p =>
+      p.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
   onProjectSelected(project: Project) {
     console.log('Вибраний проект:', project);
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
   }
 }

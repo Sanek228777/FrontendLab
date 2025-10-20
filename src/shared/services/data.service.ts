@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { Project } from '../models/project.model';
 
 @Injectable({
@@ -33,26 +31,7 @@ export class DataService {
       createdAt: new Date('2025-04-05')
     }
   ];
-
-  private projectsSubject = new BehaviorSubject<Project[]>([]);
-  public projects$ = this.projectsSubject.asObservable();
-
-  constructor() {}
-
-  getItems(): Observable<Project[]> {
-    return of(this.projects).pipe(
-      tap(projects => this.projectsSubject.next([...projects]))
-    );
-  }
-
-  filterProjects(searchTerm: string): void {
-    const query = searchTerm.trim().toLowerCase();
-    const filtered = query
-      ? this.projects.filter(p =>
-        p.name.toLowerCase().includes(query)
-      )
-      : this.projects;
-
-    this.projectsSubject.next(filtered);
+  getItems(): Project[] {
+    return this.projects;
   }
 }

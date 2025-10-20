@@ -1,11 +1,11 @@
 <header>
-  <h1> {{ title }} </h1>
+  <h1>{{ siteTitle }}</h1>
 </header>
 
-<main>
-  <router-outlet></router-outlet>
+<main class="app-content">
+  <app-items-list></app-items-list>
 </main>
 
 <footer>
-  <p>&copy; 2025 My App </p>
+  <p>© 2025 {{ siteTitle }} — Усі права захищені</p>
 </footer>

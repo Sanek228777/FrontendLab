@@ -1,17 +1,12 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ItemsListComponent } from './items-list.component';
+import { Component } from '@angular/core';
+import { LayoutComponent } from './layout/layout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    ItemsListComponent
-  ],
-  templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  imports: [LayoutComponent],
+  template: `<app-layout [siteTitle]="siteTitle"></app-layout>`
 })
-export class App {
-  protected readonly title = signal('angular-project');
+export class AppComponent {
+  siteTitle = 'Платформа для веб-розробки';
 }

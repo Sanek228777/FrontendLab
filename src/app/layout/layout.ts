@@ -1,12 +1,13 @@
-import {Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ItemsListComponent } from '../items-list/items-list';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [],
+  imports: [ItemsListComponent],
   templateUrl: './layout.html',
   styleUrls: ['./layout.css']
 })
-export class Layout {
-  title = 'Web розробка';
+export class LayoutComponent {
+  @Input() siteTitle!: string;
 }

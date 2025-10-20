@@ -5,11 +5,13 @@
   margin: 12px 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
+  border-left: 6px solid #4a90e2;
 }
 
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  border-left-color: #6a1b9a;
 }
 
 .description {
@@ -18,17 +20,15 @@
   margin-top: 8px;
 }
 
-.new {
-  border-left: 6px solid green;
-  background: #eaffea;
+.highlight {
+  background: #f0fff0;
 }
 
-.old {
-  border-left: 6px solid orange;
-  background: #fff6e0;
-}
-
-.outdated {
-  border-left: 6px solid red;
-  background: #ffe5e5;
+.badge {
+  background: #d32f2f;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-left: 10px;
 }

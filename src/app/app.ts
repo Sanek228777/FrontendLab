@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ItemsListComponent } from './items-list/items-list';
+import { ItemsListComponent } from './items-list.component';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { ItemsListComponent } from './items-list/items-list';
   styleUrls: ['./app.css']
 })
 export class AppComponent {
-  title = 'Web - розроблення';
+  title = 'My App';
 }

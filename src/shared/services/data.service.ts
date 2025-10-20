@@ -55,9 +55,4 @@ export class DataService {
 
     this.projectsSubject.next(filtered);
   }
-
-  getItemById(id: number): Observable<Project | undefined> {
-    const found = this.projects.find(p => p.id === id);
-    return of(found);
-  }
 }

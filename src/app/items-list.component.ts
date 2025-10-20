@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Project } from '../shared/models/project.model';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './items-list.component.html',
+  styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent {
   projects: Project[] = [

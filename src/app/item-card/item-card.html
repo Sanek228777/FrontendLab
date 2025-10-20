@@ -3,10 +3,15 @@
      [ngStyle]="{ 'border-color': project.technology.includes('React') ? 'blue' : 'gray' }">
 
   <h3>{{ project.name }}</h3>
-  <p class="description">{{ project.description }}</p>
 
+  <span *ngIf="project.createdAt.getFullYear() === 2025" class="badge">
+    NEW
+  </span>
+
+  <p class="description">{{ project.description }}</p>
   <p><b>Tech:</b> {{ project.technology }}</p>
   <p><b>Author:</b> {{ project.author }}</p>
+  <p><b>Created:</b> {{ project.createdAt | date:'longDate' }}</p>
 
   <a [routerLink]="['/items', project.id]" class="btn-details">
     Детальніше

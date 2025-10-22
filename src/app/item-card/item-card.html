@@ -1,6 +1,13 @@
-<div class="item-card">
+<div
+  class="item-card"
+  [ngClass]="{'featured': course.featured}"
+  [ngStyle]="{'background-color': course.level === 'Просунутий' ? '#e8f0ff' : '#ffffff'}">
+
   <h3>{{ course.title }}</h3>
   <p>{{ course.description }}</p>
+
   <p><strong>Рівень:</strong> {{ course.level }}</p>
   <p><strong>Тривалість:</strong> {{ course.duration }}</p>
+
+  <p *ngIf="course.featured" class="recommended">⭐ Рекомендовано</p>
 </div>

@@ -7,7 +7,7 @@ import { Course } from '../../shared/models/course';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './item-card.html',
-  styleUrl: './item-card.css'
+  styleUrls: ['./item-card.css']
 })
 export class ItemCardComponent {
   @Input() course!: Course;

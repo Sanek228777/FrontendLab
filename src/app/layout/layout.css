@@ -7,13 +7,12 @@ body {
 }
 
 header {
-  background: linear-gradient(90deg, #4a00e0, #8e2de2);
+  background: linear-gradient(90deg, #5b00b7, #7b1dff);
   color: white;
-  text-align: center;
   padding: 20px 0;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
 }
 
 main {
@@ -22,11 +21,12 @@ main {
   padding: 0 20px;
 }
 
+
 footer {
-  background: #222;
-  color: #aaa;
   text-align: center;
-  padding: 15px;
+  background: #222;
+  color: white;
+  padding: 10px 0;
+  margin-top: 20px;
   font-size: 14px;
-  margin-top: 40px;
 }

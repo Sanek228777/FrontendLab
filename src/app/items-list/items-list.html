@@ -1,6 +1,18 @@
-<div class="items-list">
-  <app-item-card
-    *ngFor="let course of courses"
-    [course]="course">
-  </app-item-card>
+<div class="items-list-container">
+  <h2 class="section-title">Каталог курсів</h2>
+
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="🔍 Пошук курсу..."
+    class="search-box"
+  />
+
+  <div class="items-list">
+    <app-item-card
+      *ngFor="let course of filteredCourses"
+      [course]="course"
+      (selectCourse)="onCourseSelected($event)">
+    </app-item-card>
+  </div>
 </div>

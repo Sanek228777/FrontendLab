@@ -10,4 +10,6 @@
   <p><strong>Тривалість:</strong> {{ course.duration }}</p>
 
   <p *ngIf="course.featured" class="recommended">⭐ Рекомендовано</p>
+
+  <button (click)="onSelect()">Детальніше</button>
 </div>

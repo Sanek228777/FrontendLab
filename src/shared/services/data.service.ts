@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Course } from '../models/course';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-
   private courses: Course[] = [
     {
       id: 1,
@@ -36,9 +36,23 @@ export class DataService {
     }
   ];
 
+  private coursesSubject = new BehaviorSubject<Course[]>(this.courses);
+  courses$ = this.coursesSubject.asObservable();
+
   constructor() {}
 
-  getItems(): Course[] {
-    return this.courses;
+  getItems(): Observable<Course[]> {
+    return of(this.courses);
+  }
+
+  filterCourses(term: string): void {
+    const filtered = this.courses.filter(c =>
+      c.title.toLowerCase().includes(term.toLowerCase())
+    );
+    this.coursesSubject.next(filtered);
+  }
+
+  resetCourses(): void {
+    this.coursesSubject.next(this.courses);
   }
 }

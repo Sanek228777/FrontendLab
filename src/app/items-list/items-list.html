@@ -1,18 +1,21 @@
-<div class="items-list-container">
-  <h2 class="section-title">Каталог курсів</h2>
+<div class="courses-container">
+  <h2>🎓 Список курсів</h2>
 
-  <input
-    type="text"
-    [(ngModel)]="searchTerm"
-    placeholder="🔍 Пошук курсу..."
-    class="search-box"
-  />
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="🔍 Пошук курсу..."
+      [(ngModel)]="searchTerm"
+      (input)="onSearchChange()"
+    />
+  </div>
 
-  <div class="items-list">
-    <app-item-card
-      *ngFor="let course of filteredCourses"
-      [course]="course"
-      (selectCourse)="onCourseSelected($event)">
-    </app-item-card>
+  <div class="course-card" *ngFor="let course of courses">
+    <div class="info">
+      <h3>{{ course.title }}</h3>
+      <p>{{ course.description }}</p>
+      <p><strong>Рівень:</strong> {{ course.level }}</p>
+      <p><strong>Тривалість:</strong> {{ course.duration }}</p>
+    </div>
   </div>
 </div>

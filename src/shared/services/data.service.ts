@@ -45,13 +45,17 @@ export class DataService {
     return of(this.courses);
   }
 
+  getItemById(id: number): Observable<Course | undefined> {
+    const item = this.courses.find(c => c.id === id);
+    return of(item);
+  }
+
   filterCourses(term: string): void {
     const filtered = this.courses.filter(c =>
       c.title.toLowerCase().includes(term.toLowerCase())
     );
     this.coursesSubject.next(filtered);
   }
-
   resetCourses(): void {
     this.coursesSubject.next(this.courses);
   }

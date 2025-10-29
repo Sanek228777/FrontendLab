@@ -1,44 +1,36 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { DataService } from '../../shared/services/data.service';
 import { Course } from '../../shared/models/course';
+import { ItemCardComponent } from '../item-card/item-card';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ItemCardComponent],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsListComponent implements OnInit, OnDestroy {
+export class ItemsListComponent implements OnInit {
   courses: Course[] = [];
   searchTerm: string = '';
-  private subscription!: Subscription;
 
   constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    this.subscription = this.dataService.courses$.subscribe(data => {
-      this.courses = data;
-    });
-
-    this.dataService.getItems().subscribe(data => {
-      this.courses = data;
+  ngOnInit() {
+    this.dataService.getItems().subscribe(courses => {
+      this.courses = courses;
     });
   }
 
-  onSearchChange(): void {
+  onSearchChange() {
     if (this.searchTerm.trim() === '') {
-      this.dataService.resetCourses();
+      this.dataService.getItems().subscribe(courses => this.courses = courses);
     } else {
-      this.dataService.filterCourses(this.searchTerm);
-    }
-  }
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
+      this.courses = this.courses.filter(c =>
+        c.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
     }
   }
 }

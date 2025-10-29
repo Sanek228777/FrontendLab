@@ -31,3 +31,14 @@
   font-weight: bold;
   margin-top: 10px;
 }
+.details-link {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.details-link:hover {
+  background-color: #0056b3;
+}

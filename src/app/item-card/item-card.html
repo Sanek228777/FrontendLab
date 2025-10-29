@@ -11,5 +11,5 @@
 
   <p *ngIf="course.featured" class="recommended">⭐ Рекомендовано</p>
 
-  <button (click)="onSelect()">Детальніше</button>
+  <a [routerLink]="['/items', course.id]" class="details-link">Детальніше</a>
 </div>

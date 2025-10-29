@@ -1,0 +1,13 @@
+<div *ngIf="course; else notFound" class="item-details">
+  <h2>{{ course.title }}</h2>
+  <img [src]="course.imageUrl" alt="{{ course.title }}" />
+  <p>{{ course.description }}</p>
+  <p><strong>Рівень:</strong> {{ course.level }}</p>
+  <p><strong>Тривалість:</strong> {{ course.duration }}</p>
+
+  <a routerLink="/items" class="back-link">← Назад до списку</a>
+</div>
+
+<ng-template #notFound>
+  <p>Курс не знайдено 😢</p>
+</ng-template>

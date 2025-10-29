@@ -10,12 +10,7 @@
     />
   </div>
 
-  <div class="course-card" *ngFor="let course of courses">
-    <div class="info">
-      <h3>{{ course.title }}</h3>
-      <p>{{ course.description }}</p>
-      <p><strong>Рівень:</strong> {{ course.level }}</p>
-      <p><strong>Тривалість:</strong> {{ course.duration }}</p>
-    </div>
+  <div *ngFor="let course of courses">
+    <app-item-card [course]="course"></app-item-card>
   </div>
 </div>

@@ -1,10 +1,11 @@
 <div
   class="item-card"
+  appHoverHighlight
   [ngClass]="{'featured': course.featured}"
   [ngStyle]="{'background-color': course.level === 'Просунутий' ? '#e8f0ff' : '#ffffff'}">
 
   <h3>{{ course.title }}</h3>
-  <p>{{ course.description }}</p>
+  <p>{{ course.description | truncateDescription:100 }}</p>
 
   <p><strong>Рівень:</strong> {{ course.level }}</p>
   <p><strong>Тривалість:</strong> {{ course.duration }}</p>

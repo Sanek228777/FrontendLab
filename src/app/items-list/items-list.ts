@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { DataService } from '../../shared/services/data.service';
 import { Course } from '../../shared/models/course';
 import { ItemCardComponent } from '../item-card/item-card';
@@ -13,24 +15,26 @@ import { ItemCardComponent } from '../item-card/item-card';
   styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent implements OnInit {
-  courses: Course[] = [];
+  courses$!: Observable<Course[]>;
   searchTerm: string = '';
 
   constructor(private dataService: DataService) {}
 
   ngOnInit() {
-    this.dataService.getItems().subscribe(courses => {
-      this.courses = courses;
-    });
+    this.loadCourses();
+  }
+
+  loadCourses() {
+    this.courses$ = this.dataService.getItems();
   }
 
   onSearchChange() {
-    if (this.searchTerm.trim() === '') {
-      this.dataService.getItems().subscribe(courses => this.courses = courses);
-    } else {
-      this.courses = this.courses.filter(c =>
-        c.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    }
+    this.courses$ = this.dataService.getItems().pipe(
+      map(courses =>
+        courses.filter(c =>
+          c.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+        )
+      )
+    );
   }
 }

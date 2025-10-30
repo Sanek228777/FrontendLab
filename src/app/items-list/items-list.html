@@ -10,7 +10,7 @@
     />
   </div>
 
-  <div *ngFor="let course of courses">
+  <div *ngFor="let course of courses$ | async">
     <app-item-card [course]="course"></app-item-card>
   </div>
 </div>

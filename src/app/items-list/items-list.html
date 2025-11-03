@@ -10,6 +10,14 @@
     />
   </div>
 
+  <div class="toolbar">
+    <a routerLink="/add-item" class="add-btn">➕ Додати курс</a>
+  </div>
+
+  <div *ngIf="(courses$ | async)?.length === 0" class="empty">
+    😕 Нічого не знайдено...
+  </div>
+
   <div *ngFor="let course of courses$ | async">
     <app-item-card [course]="course"></app-item-card>
   </div>

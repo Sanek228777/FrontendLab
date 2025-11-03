@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { ItemsListComponent } from '../items-list/items-list';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [ItemsListComponent],
+  imports: [CommonModule, RouterModule],
   templateUrl: './layout.html',
   styleUrls: ['./layout.css']
 })

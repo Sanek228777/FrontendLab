@@ -1,11 +1,16 @@
-<header>
-  <h1>{{ siteTitle }}</h1>
+<header class="app-header">
+  <h1 class="site-title">{{ siteTitle }}</h1>
+
+  <nav class="nav-bar">
+    <a routerLink="/items" routerLinkActive="active">Курси</a>
+    <a routerLink="/add-item" routerLinkActive="active">Додати курс</a>
+  </nav>
 </header>
 
-<main class="app-content">
-  <app-items-list></app-items-list>
+<main>
+  <router-outlet></router-outlet>
 </main>
 
-<footer>
-  <p>© 2025 {{ siteTitle }} — Усі права захищені</p>
+<footer class="app-footer">
+  <p>© 2025 Веб-платформа</p>
 </footer>

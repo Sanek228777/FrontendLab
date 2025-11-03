@@ -59,4 +59,9 @@ export class DataService {
   resetCourses(): void {
     this.coursesSubject.next(this.courses);
   }
+  addCourse(course: Course): void {
+    this.courses.push(course);
+    this.coursesSubject.next(this.courses);
+  }
+
 }

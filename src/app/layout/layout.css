@@ -1,32 +1,52 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6fa;
-  margin: 0;
-  padding: 0;
-  color: #222;
+.app-header {
+  display: flex;
+  justify-content: space-between; /* рознести назву та меню */
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #4b0082; /* темно-фіолетовий фон */
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-header {
-  background: linear-gradient(90deg, #5b00b7, #7b1dff);
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-  font-size: 32px;
+.site-title {
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
-main {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 0 20px;
+.nav-bar {
+  display: flex;
+  gap: 25px; /* відстань між кнопками */
 }
 
+.nav-bar a {
+  text-decoration: none;
+  color: #f0e6ff; /* світло-фіолетовий текст */
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-footer {
+.nav-bar a:hover {
+  background-color: #6a0dad; /* яскравіший фіолетовий при наведенні */
+  color: #fff;
+}
+
+.nav-bar a.active {
+  background-color: #fff;
+  color: #4b0082;
+  font-weight: 600;
+}
+
+main {
+  padding: 30px 60px;
+  background-color: #f8f8ff; /* світлий фон для контенту */
+  min-height: 80vh;
+}
+
+.app-footer {
+  background-color: #4b0082;
+  color: #eee;
   text-align: center;
-  background: #222;
-  color: white;
   padding: 10px 0;
-  margin-top: 20px;
-  font-size: 14px;
 }

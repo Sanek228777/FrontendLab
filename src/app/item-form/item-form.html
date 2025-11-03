@@ -1,0 +1,68 @@
+<div class="form-container">
+  <h2>Додати новий курс</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Назва -->
+    <div class="form-group">
+      <label>Назва</label>
+      <input type="text" formControlName="title" />
+      <small *ngIf="f['title'].touched && f['title'].errors?.['required']">
+        Введіть назву курсу
+      </small>
+      <small *ngIf="f['title'].errors?.['minlength']">
+        Мінімум 3 символи
+      </small>
+    </div>
+
+    <!-- Опис -->
+    <div class="form-group">
+      <label>Опис</label>
+      <textarea formControlName="description"></textarea>
+      <small *ngIf="f['description'].touched && f['description'].errors?.['required']">
+        Введіть опис
+      </small>
+      <small *ngIf="f['description'].errors?.['minlength']">
+        Мінімум 10 символів
+      </small>
+    </div>
+
+    <!-- Рівень -->
+    <div class="form-group">
+      <label>Рівень</label>
+      <select formControlName="level">
+        <option value="">-- Оберіть рівень --</option>
+        <option value="beginner">Початковий</option>
+        <option value="intermediate">Середній</option>
+        <option value="advanced">Просунутий</option>
+      </select>
+      <small *ngIf="f['level'].touched && f['level'].errors?.['required']">
+        Виберіть рівень
+      </small>
+    </div>
+
+    <!-- Тривалість -->
+    <div class="form-group">
+      <label>Тривалість</label>
+      <input type="text" formControlName="duration" />
+      <small *ngIf="f['duration'].touched && f['duration'].errors?.['required']">
+        Введіть тривалість
+      </small>
+    </div>
+
+    <!-- Зображення -->
+    <div class="form-group">
+      <label>URL зображення</label>
+      <input type="text" formControlName="imageUrl" />
+    </div>
+
+    <!-- Обране -->
+    <div class="form-group checkbox">
+      <label>
+        <input type="checkbox" formControlName="featured" />
+        Обраний курс
+      </label>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Додати</button>
+  </form>
+</div>

@@ -19,20 +19,21 @@ export class ItemsListComponent implements OnInit {
   courses$!: Observable<Course[]>;
   searchTerm: string = '';
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit() {
     this.loadCourses();
   }
 
   loadCourses() {
-    this.courses$ = this.dataService.getItems();
+    this.courses$ = this.dataService.getAll();
   }
 
   onSearchChange() {
-    this.courses$ = this.dataService.getItems().pipe(
-      map(courses =>
-        courses.filter(c =>
+    this.courses$ = this.dataService.getAll().pipe(
+      map((courses: Course[]) =>
+        courses.filter((c: Course) =>
           c.title.toLowerCase().includes(this.searchTerm.toLowerCase())
         )
       )

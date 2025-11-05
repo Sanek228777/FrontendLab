@@ -41,7 +41,10 @@ export class ItemFormComponent {
     }
 
     const newCourse: Course = this.form.value;
-    this.dataService.addCourse(newCourse);
+    this.dataService.create(newCourse).subscribe({
+      next: (course) => console.log('Додано курс:', course),
+      error: (err) => console.error('Помилка додавання:', err)
+    });
     this.router.navigate(['/items']);
   }
 }

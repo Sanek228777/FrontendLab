@@ -1,0 +1,53 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-600">
+  <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+
+    <h2 class="text-3xl font-bold text-center text-indigo-700 mb-6">Увійти</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Email -->
+      <div class="mb-4">
+        <label class="block text-gray-700 font-medium mb-2">Електронна пошта</label>
+        <input
+          type="email"
+          formControlName="email"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+          placeholder="Введіть вашу пошту"
+        />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-red-500 text-sm mt-1">
+          Введіть коректну адресу електронної пошти
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label class="block text-gray-700 font-medium mb-2">Пароль</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none"
+          placeholder="Введіть пароль"
+        />
+        <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-red-500 text-sm mt-1">
+          Пароль обов’язковий
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg font-semibold transition duration-200 disabled:opacity-50"
+      >
+        Увійти
+      </button>
+    </form>
+
+    <!-- Link to register -->
+    <p class="mt-4 text-center text-gray-600">
+      Немає акаунта?
+      <a routerLink="/register" class="text-indigo-600 font-semibold hover:underline">
+        Зареєструватися
+      </a>
+    </p>
+  </div>
+</div>
